@@ -144,3 +144,13 @@ endif
 
 set number
 set relativenumber
+
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+
+colorscheme solarized                                      
+set cursorline
+set colorcolumn=80
