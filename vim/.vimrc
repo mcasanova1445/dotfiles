@@ -154,3 +154,8 @@ endif
 colorscheme solarized                                      
 set cursorline
 set colorcolumn=80
+let g:airline_solarized_bg='dark'
+let g:airline_powerline_fonts = 1
+
+autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
+autocmd VimLeave * silent exec "! echo -ne '\e[5 q'" 
