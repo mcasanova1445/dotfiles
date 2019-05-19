@@ -10,3 +10,6 @@
 [submodule "vim/.vim/pack/functionality/start/terminus"]
 	path = vim/.vim/pack/functionality/start/terminus
 	url = https://github.com/wincent/terminus.git
+[submodule "zsh/.oh-my-zsh"]
+	path = zsh/.oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git
