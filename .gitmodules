@@ -13,3 +13,6 @@
 [submodule "zsh/.oh-my-zsh"]
 	path = zsh/.oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
+[submodule "vim/.vim/pack/functionality/start/fugitive"]
+	path = vim/.vim/pack/functionality/start/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
