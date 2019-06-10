@@ -77,6 +77,8 @@ inoremap <C-U> <C-G>u<C-U>
 " can position the cursor, Visually select and scroll with the mouse.
 if has('mouse')
   set mouse=a
+  map <ScrollWheelUp> <C-Y>
+  map <ScrollWheelDown> <C-E>
 endif
 
 " Switch syntax highlighting on when the terminal has colors or when using the
@@ -142,20 +144,30 @@ endif
 "
 "
 
+let mapleader = " "
+runtime pack/functionality/start/CamelCaseMotion/autoload/camelcasemotion.vim
+" runtime pack/colorschemes/start/solarized/autoload/togglebg.vim
+
 set number
 set relativenumber
 
 if has('gui_running')
     set background=light
+    " let g:airline_solarized_bg='light'
+    let g:airline_powerline_fonts = 0
 else
     set background=dark
+    let g:airline_solarized_bg='dark'
+    " let g:airline_powerline_fonts = 1
+    let g:airline_powerline_fonts = 1
+    " let g:airline_theme = 'solarized'
 endif
 
-colorscheme solarized                                      
+" colorscheme solarized                                      
 set cursorline
-set colorcolumn=80
-let g:airline_solarized_bg='dark'
-let g:airline_powerline_fonts = 1
 
 autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
 autocmd VimLeave * silent exec "! echo -ne '\e[5 q'" 
+
+call camelcasemotion#CreateMotionMappings('<leader>')
+
