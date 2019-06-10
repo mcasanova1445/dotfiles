@@ -16,3 +16,12 @@
 [submodule "vim/.vim/pack/functionality/start/fugitive"]
 	path = vim/.vim/pack/functionality/start/fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/.vim/pack/functionality/start/repeat"]
+	path = vim/.vim/pack/functionality/start/repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "vim/.vim/pack/functionality/start/surround"]
+	path = vim/.vim/pack/functionality/start/surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/.vim/pack/functionality/start/CamelCaseMotion"]
+	path = vim/.vim/pack/functionality/start/CamelCaseMotion
+	url = https://github.com/bkad/CamelCaseMotion.git
