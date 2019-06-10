@@ -1,0 +1,3 @@
+#! /usr/bin/sh
+xhost +SI:localuser:wu
+sudo -u wu env HOME=/home/wu USER=wu USERNAME=wu LOGNAME=wu WINEARCH=win32 WINEPREFIX=/home/wu "$@"

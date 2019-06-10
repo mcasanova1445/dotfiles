@@ -1,0 +1,49 @@
+#!/bin/bash
+
+player_tot=$(playerctl -l | wc -l)
+
+if [[ ${player_tot} -eq 0 ]]; then
+    echo ""
+    exit
+else
+
+    player_num=$(cat ~/.config/current_player)
+    player_name=$(playerctl -l | sed "${player_num}q;d")
+
+    if [[ ${player_num} -gt ${player_tot} ]]; then
+        echo $((${player_num} -1)) > ~/.config/current_player
+        exit
+    fi
+
+    case "$1" in
+        -i)
+            echo ${player_name}
+            exit;;
+        -n)
+            if [[ ${player_num} -lt ${player_tot} ]]; then
+                echo $((${player_num} +1)) > ~/.config/current_player
+            fi
+            exit;;
+        -p)
+            if [[ ${player_num} -gt 1 ]]; then
+                echo $((${player_num} -1)) > ~/.config/current_player
+            fi
+            exit;;
+        -s)
+            player_status=$(playerctl --player=${player_name} status 2> /dev/null)
+            if [[ $? -eq 0 ]]; then
+                metadata="$(playerctl --player=${player_name} metadata artist) - $(playerctl --player=${player_name} metadata title)"
+            fi
+            # Foreground color formatting tags are optional
+            if [[ $player_status = "Playing" ]]; then
+                echo "▶[${player_num}/${player_tot}]${player_name%%-*}: ${metadata# - }"
+            elif [[ $player_status = "Paused" ]]; then
+                echo "⏸[${player_num}/${player_tot}]${player_name%%-*}: ${metadata# - }"
+            else
+                echo "[${player_num}/${player_tot}]${player_name%%-*}:"
+            fi
+            exit;;
+    esac
+
+fi
+

@@ -1,0 +1,130 @@
+# Basic binds
+super + Return
+	$TERMINAL
+#super + d
+#	dmenu_run
+#super + r
+#	$TERMINAL -e lf
+super + shift + e
+	thunderbird
+super + shift + m
+	$TERMINAL -e ncmpcpp
+super + shift + n
+	$TERMINAL -e newsboat
+super + shift + i
+	$TERMINAL -e htop
+super + shift + y
+	$TERMINAL -e calcurse -D ~/.config/calcurse
+super + shift + a
+	$TERMINAL -e alsamixer
+#super + shift + c
+#	mpv --no-osc --no-input-default-bindings --input-conf=/dev/null --geometry=640x480-0-0 --title='mpvfloat' /dev/video0
+#super + shift + e
+#	tutorialvids
+super + w
+	tabbed-surf
+super + shift + w
+	firefox
+#super + shift + g
+#	gimp
+#
+## Et cetera...
+super + shift + grave
+	dmenu_unicode
+#super + Scroll_Lock
+#	killall screenkey || screenkey
+super + Insert
+	clipmenu
+super + shift + Insert
+	clipdel -d ".*"
+super + shift + x
+	prompt "Shutdown computer?" "systemctl poweroff"
+super + Delete
+	slock
+super + shift + Delete
+	prompt "Suspend computer?" "systemctl suspend"
+super + shift + BackSpace
+	prompt "Reboot computer?" "systemctl reboot"
+#super + x
+#	mpc pause; pauseallmpv; i3lock -e -f -c 1d2021; xset dpms force off
+#XF86Launch1
+#	xset dpms force off
+#XF86TouchpadToggle
+#	(synclient | grep "TouchpadOff.*1" && synclient TouchpadOff=0)>/dev/null || synclient TouchpadOff=1
+#XF86TouchpadOff
+#	synclient TouchpadOff=1
+#XF86TouchpadOn
+#	synclient TouchpadOff=0
+
+## Recording
+## Take screenshot
+Print
+	maim pic-full-$(date '+%y%m%d-%H%M-%S').png
+# Pick screenshot type
+shift + Print
+	maimpick
+## Record audio or video
+#super + Print
+#	dmenurecord
+## kill active recording
+#super + Delete
+#	dmenurecord kill
+#
+# Play-pause audio
+super + XF86AudioMute
+	playerctl --player=$(~/.scripts/music_status -i) play-pause
+# Changes to next/previous tracks
+super + {XF86AudioLowerVolume,XF86AudioRaiseVolume}
+	playerctl --player=$(music_status -i) {previous,next}
+# Change player
+super + shift + {XF86AudioLowerVolume,XF86AudioRaiseVolume}
+	music_status -{p,n}
+# Play-pause audio
+XF86AudioMute
+	amixer sset Master toggle
+# Increase/decrease volume
+{XF86AudioLowerVolume,XF86AudioRaiseVolume}
+	amixer sset Master 5%{-,+}; killall slstatus; slstatus
+# Increase/decrease volume
+shift + {XF86AudioLowerVolume,XF86AudioRaiseVolume}
+	amixer sset Master 1%{-,+}; killall slstatus; slstatus
+
+## Function keys
+## Show readme
+#super + F1
+#	groff -mom $HOME/.local/share/larbs/readme.mom -Tpdf | zathura -
+## F2 is restart in i3 right now.
+## Change display
+#super + F3
+#	displayselect
+## Hibernate
+#super + F4
+#	prompt 'Hibernate computer?' 'sudo systemctl suspend'
+## Start torrent daemon/open interface
+#super + F6
+#	torwrap
+## toggle torrent daemon
+#super + F7
+#	td-togggle
+## sync email
+#super + F8
+#	mailsync
+## Mount a USB drive or Android device
+#super + {F9,F10}
+#{dmenumount,dmenuumount}
+
+# Notification center
+super + Menu
+	kill -s USR1 $(pidof deadd-notification-center)
+# Screen brightness
+{XF86MonBrightnessDown,XF86MonBrightnessUp}
+	xbacklight {-dec, -inc} 5
+# Screen brightness
+shift + {XF86MonBrightnessDown,XF86MonBrightnessUp}
+	xbacklight {-dec, -inc} 1
+# File manager
+super + Home
+	$TERMINAL -e vifm
+# File manager
+super + shift + Home
+	pcmanfm

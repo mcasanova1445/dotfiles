@@ -1,0 +1,1 @@
+notify-send "Your current IP is $(dig @resolver1.opendns.com ANY myip.opendns.com +short)"
