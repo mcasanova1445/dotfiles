@@ -24,7 +24,7 @@ ZSH_THEME="robbyrussell"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
 # DISABLE_UPDATE_PROMPT="true"
@@ -68,7 +68,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode)
+plugins=(git vi-mode zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -132,3 +132,17 @@ zle-line-init() {
     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
     echo -ne "\e[5 q"
 }
+
+
+typeset -g ZSH_AUTOSUGGEST #_HIGHLIGHT_STYLE='fg=10'
+
+#function zle-line-init zle-keymap-select {
+    #RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
+    #RPS2=$RPS1
+    #zle reset-prompt
+#}
+#zle -N zle-line-init
+#zle -N zle-keymap-select
+
+#bindkey "^P" history-beginning-search-backward
+#bindkey "^N" history-beginning-search-forward
